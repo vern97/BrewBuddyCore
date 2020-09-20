@@ -1,0 +1,69 @@
+﻿@model BrewBuddyCore.Models.Brew
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Brew</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BrewID" />
+            <div class="form-group">
+                <label asp-for="CreateDate" class="control-label"></label>
+                <input asp-for="CreateDate" class="form-control" />
+                <span asp-validation-for="CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Style" class="control-label"></label>
+                <input asp-for="Style" class="form-control" />
+                <span asp-validation-for="Style" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Yield" class="control-label"></label>
+                <input asp-for="Yield" class="form-control" />
+                <span asp-validation-for="Yield" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OriginalGravity" class="control-label"></label>
+                <input asp-for="OriginalGravity" class="form-control" />
+                <span asp-validation-for="OriginalGravity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FinalGravity" class="control-label"></label>
+                <input asp-for="FinalGravity" class="form-control" />
+                <span asp-validation-for="FinalGravity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ABV" class="control-label"></label>
+                <input asp-for="ABV" class="form-control" />
+                <span asp-validation-for="ABV" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,87 @@
+﻿@model BrewBuddyCore.Models.Brew
+
+@{
+    ViewData["Title"] = "Input A New Brew";
+}
+
+<div class="row justify-content-md-center">
+    <h2>Input A New Brew</h2>
+</div>
+
+
+<hr />
+
+<div class="row justify-content-md-center">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="CreateDate" class="control-label"></label>
+                <input asp-for="CreateDate" class="form-control" />
+                <span asp-validation-for="CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Style" class="control-label"></label>
+                @Html.DropDownListFor(m => m.Style, new SelectListItem[] {
+                    new SelectListItem {Text = "Cider", Value = "Cider"},
+                    new SelectListItem {Text = "IPA", Value = "IPA"},
+                    new SelectListItem {Text = "Lager", Value = "Lager"},
+                    new SelectListItem {Text = "Porter", Value = "Porter"},
+                    new SelectListItem {Text = "Pilsner", Value = "Pilsner"},
+                }, htmlAttributes: new { @class = "form-control custom-select custom-select-md"})
+                <span asp-validation-for="Style" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Yield" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="Yield" class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text">gallons</span>
+                    </div>
+                </div>
+                <span asp-validation-for="Yield" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="OriginalGravity" class="control-label"></label>
+                <input asp-for="OriginalGravity" class="form-control" />
+                <span asp-validation-for="OriginalGravity" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="FinalGravity" class="control-label"></label>
+                <input asp-for="FinalGravity" class="form-control" />
+                <span asp-validation-for="FinalGravity" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="ABV" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="ABV" class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text">%</span>
+                    </div>
+                </div>
+                <span asp-validation-for="ABV" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
